@@ -17,14 +17,14 @@
                         de confianza para hospitales y clínicas en todo el país. Ofrecemos de equipos
                         médicos de confianza para tu institución de la más alta calidad.
                     </p>
-                    <button
+                    <a href="{{ route('catalog.index') }}"
                         class="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center">
                         Ver Catálogo
                         <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                             </path>
                         </svg>
-                    </button>
+                    </a>
                 </div>
 
                 <!-- Image -->

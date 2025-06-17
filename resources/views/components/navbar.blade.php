@@ -18,7 +18,7 @@
                         class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                         Empresa
                     </a>
-                    <a href="#"
+                    <a href="{{ route('catalog.index') }}"
                         class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                         Productos
                     </a>
@@ -57,7 +57,8 @@
             <a href="#" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium">
                 Empresa
             </a>
-            <a href="#" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium">
+            <a href="{{ route('catalog.index') }}"
+                class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium">
                 Productos
             </a>
             <a href="#" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium">
