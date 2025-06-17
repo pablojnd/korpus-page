@@ -39,7 +39,7 @@
                 <!-- Product Image -->
                 <div>
                     <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4">
-                        <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/product-placeholder.jpg') }}"
+                        <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('images/product-placeholder.jpg') }}"
                             alt="{{ $product->name }}" class="w-full h-96 object-cover">
                     </div>
 
@@ -70,11 +70,11 @@
                     </h1>
 
                     <!-- Price -->
-                    @if ($product->price)
+                    {{-- @if ($product->price)
                         <p class="text-3xl font-bold text-blue-600 mb-6">
-                            ${{ number_format($product->price, 0, ',', '.') }}
+                            {{ $product->formatted_price }}
                         </p>
-                    @endif
+                    @endif --}}
 
                     <!-- Stock Status -->
                     <div class="mb-6">
@@ -122,10 +122,8 @@
                     <!-- Attributes -->
                     @if ($product->atributtes)
                         <div class="mb-8">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-3">Especificaciones</h3>
-                            <div class="bg-gray-50 rounded-lg p-4">
-                                <p class="text-gray-600">{{ $product->atributtes }}</p>
-                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">Especificaciones Técnicas</h3>
+                            <x-product-attributes :product-attributes="$product->formatted_attributes" />
                         </div>
                     @endif
 
@@ -206,7 +204,7 @@
                         <div
                             class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                             <div class="relative">
-                                <img src="{{ $relatedProduct->image ? asset('storage/' . $relatedProduct->image) : asset('images/product-placeholder.jpg') }}"
+                                <img src="{{ $relatedProduct->main_image ? asset('storage/' . $relatedProduct->main_image) : asset('images/product-placeholder.jpg') }}"
                                     alt="{{ $relatedProduct->name }}" class="w-full h-40 object-cover">
                                 <div
                                     class="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">

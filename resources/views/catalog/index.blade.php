@@ -113,7 +113,7 @@
                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                                     <!-- Product Image -->
                                     <div class="relative">
-                                        <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/product-placeholder.jpg') }}"
+                                        <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('images/product-placeholder.jpg') }}"
                                             alt="{{ $product->name }}" class="w-full h-48 object-cover">
                                         @if ($product->stock == 0)
                                             <div
@@ -141,11 +141,11 @@
                                             {{ $product->description }}
                                         </p>
 
-                                        @if ($product->price)
+                                        {{-- @if ($product->price)
                                             <p class="text-2xl font-bold text-blue-600 mb-4">
-                                                ${{ number_format($product->price, 0, ',', '.') }}
+                                                {{ $product->formatted_price }}
                                             </p>
-                                        @endif
+                                        @endif --}}
 
                                         <div class="flex justify-between items-center">
                                             <a href="{{ route('catalog.show', $product->slug) }}"

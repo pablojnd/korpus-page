@@ -23,63 +23,107 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
+            Forms\Components\Section::make()
+                ->columns(3)
+                ->columnSpan(2)
+                ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label('Nombre')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
+                    ->label('Slug')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
+                Forms\Components\Select::make('category_id')
+                    ->label('Categoría')
+                    ->relationship('category', 'name')
+                    ->required(),
                 Forms\Components\TextInput::make('price')
+                    ->label('Precio')
                     ->required()
                     ->numeric()
                     ->default(0.00)
                     ->prefix('$'),
                 Forms\Components\TextInput::make('stock')
+                    ->label('Stock')
                     ->required()
                     ->numeric()
                     ->default(0),
-                Forms\Components\Textarea::make('atributtes')
+                Forms\Components\KeyValue::make('atributtes')
+                    ->label('Atributos')
+                    ->addActionLabel('Añadir Propiedad')
+                    ->keyLabel('Propiedad')
+                    ->keyPlaceholder('Ej: Color')
+                    ->valueLabel('Descripción')
+                    ->valuePlaceholder('Ej: Rojo')
+                    ->reorderable()
                     ->columnSpanFull(),
-                Forms\Components\Textarea::make('description')
+                Forms\Components\FileUpload::make('image')
+                    ->label('Imagen')
+                    ->image()
+                    ->imageEditor()
+                    ->directory('products')
+                    ->disk('public')
+                    ->visibility('public')
                     ->columnSpanFull(),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->required(),
+                ]),
+            Forms\Components\Section::make()
+                ->columns(3)
+                ->columnSpan(1)
+                ->schema([
+                Forms\Components\Placeholder::make('created_at')
+                    ->label('Creado el')
+                    ->content(fn(?Product $record): string => $record?->created_at?->format('d/m/Y H:i') ?? '-'),
+                Forms\Components\Placeholder::make('updated_at')
+                    ->label('Actualizado el')
+                    ->content(fn(?Product $record): string => $record?->updated_at?->format('d/m/Y H:i') ?? '-'),
                 Forms\Components\Toggle::make('is_active')
+                    ->label('Activo')
                     ->required(),
-            ]);
+                Forms\Components\Textarea::make('description')
+                    ->label('Descripción')
+                    ->columnSpanFull(),
+                ])
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('price')
-                    ->money()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('stock')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('category.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+            Tables\Columns\TextColumn::make('name')
+                ->label('Nombre')
+                ->searchable(),
+            Tables\Columns\TextColumn::make('slug')
+                ->label('Slug')
+                ->searchable(),
+            Tables\Columns\ImageColumn::make('image')
+                ->label('Imagen'),
+            Tables\Columns\TextColumn::make('price')
+                ->label('Precio')
+                ->money()
+                ->sortable(),
+            Tables\Columns\TextColumn::make('stock')
+                ->label('Stock')
+                ->numeric()
+                ->sortable(),
+            Tables\Columns\TextColumn::make('category.name')
+                ->label('Categoría')
+                ->sortable(),
+            Tables\Columns\IconColumn::make('is_active')
+                ->label('Activo')
+                ->boolean(),
+            Tables\Columns\TextColumn::make('created_at')
+                ->label('Creado el')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
+            Tables\Columns\TextColumn::make('updated_at')
+                ->label('Actualizado el')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

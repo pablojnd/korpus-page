@@ -18,19 +18,28 @@ class ProductFactory extends Factory
     {
         $name = fake()->words(3, true);
 
+        // Generar atributos médicos apropiados
+        $medicalAttributes = [
+            'material' => fake()->randomElement(['Titanio', 'Acero Inoxidable', 'Polímero Biocompatible', 'Cerámica']),
+            'certificacion' => fake()->randomElement(['CE', 'FDA', 'ISO 13485', 'ANMAT']),
+            'esterilizacion' => fake()->randomElement(['Gamma', 'ETO', 'Autoclave', 'Plasma']),
+            'origen' => fake()->randomElement(['Alemania', 'Estados Unidos', 'Suiza', 'Francia']),
+            'garantia' => fake()->randomElement(['2 años', '3 años', '5 años', 'Lifetime']),
+        ];
+
+        // Seleccionar aleatoriamente 3-4 atributos
+        $selectedAttributes = fake()->randomElements($medicalAttributes, fake()->numberBetween(3, 4), false);
+
         return [
             'name' => $name,
             'slug' => \Illuminate\Support\Str::slug($name),
             'description' => fake()->paragraph(),
-            'image' => fake()->imageUrl(640, 480, 'products', true),
-            'price' => fake()->randomFloat(2, 10, 1000), // Precio entre 10 y 1000
-            'stock' => fake()->numberBetween(0, 100), // Stock entre 0 y 100
-            'atributtes' => json_encode([
-                'color' => fake()->colorName(),
-                'size' => fake()->randomElement(['S', 'M', 'L', 'XL']),
-            ]),
+            'image' => null, // Usaremos placeholder por defecto
+            'price' => fake()->randomFloat(2, 50000, 2000000), // Precios más realistas para equipos médicos
+            'stock' => fake()->numberBetween(0, 50), // Stock entre 0 y 50
+            'atributtes' => $selectedAttributes, // Laravel auto-convertirá a JSON
             'category_id' => \App\Models\Category::factory(),
-            'is_active' => fake()->boolean(80), // 80% probabilidad de estar activo
+            'is_active' => fake()->boolean(85), // 85% probabilidad de estar activo
         ];
     }
 
