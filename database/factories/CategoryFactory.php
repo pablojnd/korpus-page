@@ -16,8 +16,25 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->words(2, true);
+
         return [
-            //
+            'name' => $name,
+            'slug' => \Illuminate\Support\Str::slug($name),
+            'description' => fake()->sentence(),
+            'parent_id' => null, // Por defecto sin padre, se puede personalizar
         ];
+    }
+
+    /**
+     * Crear una categoría hijo de otra categoría
+     */
+    public function child(): static
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'parent_id' => \App\Models\Category::factory(),
+            ];
+        });
     }
 }
