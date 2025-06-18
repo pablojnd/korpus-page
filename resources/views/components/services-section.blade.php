@@ -5,11 +5,11 @@
                 <!-- Left side - Image -->
                 <div class="relative">
                     <div class="rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="/images/service.webp" alt="Equipo médico en cirugía" class="w-full h-96 object-cover">
+                        <img src="/images/service.webp" alt="Equipo médico en cirugía" class="w-full object-cover">
                     </div>
 
                     <!-- Testimonial Card Overlay -->
-                    <div class="absolute bottom-6 left-6 bg-white rounded-xl p-4 shadow-lg max-w-xs">
+                    {{-- <div class="absolute bottom-6 left-6 bg-white rounded-xl p-4 shadow-lg max-w-xs">
                         <div class="flex items-center mb-2">
                             <img src="/images/doctor-avatar.jpg" alt="Dr. García"
                                 class="w-10 h-10 rounded-full object-cover mr-3">
@@ -48,7 +48,7 @@
                                 </path>
                             </svg>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!-- Right side - Content -->
@@ -144,7 +144,7 @@
                                 </path>
                             </svg>
                             Llámanos
-                            <span class="ml-2 text-sm">+56 2 XXXX XXXX</span>
+                            <span class="ml-2 text-sm">+56 9 9822 5057</span>
                         </button>
                     </div>
                 </div>
