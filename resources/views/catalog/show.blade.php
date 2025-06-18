@@ -60,9 +60,9 @@
                 <!-- Product Info -->
                 <div>
                     <!-- Category Badge -->
-                    <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+                    {{-- <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
                         {{ $product->category->name }}
-                    </span>
+                    </span> --}}
 
                     <!-- Product Title -->
                     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
@@ -77,7 +77,7 @@
                     @endif --}}
 
                     <!-- Stock Status -->
-                    <div class="mb-6">
+                    {{-- <div class="mb-6">
                         @if ($product->stock > 5)
                             <span
                                 class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
@@ -109,7 +109,7 @@
                                 Sin Stock
                             </span>
                         @endif
-                    </div>
+                    </div> --}}
 
                     <!-- Description -->
                     <div class="mb-8">
@@ -129,7 +129,7 @@
 
                     <!-- Action Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                        <button
+                        {{-- <button
                             class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path
@@ -137,7 +137,7 @@
                                 </path>
                             </svg>
                             Solicitar Cotización
-                        </button>
+                        </button> --}}
 
                         <button
                             class="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center justify-center">

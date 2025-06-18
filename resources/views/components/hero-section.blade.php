@@ -30,7 +30,7 @@
                 <!-- Image -->
                 <div class="relative">
                     <div class="bg-white rounded-3xl p-8 shadow-2xl">
-                        <img src="/images/medical-team.jpg" alt="Equipo médico profesional"
+                        <img src="/images/doctora.webp" alt="Equipo médico profesional"
                             class="w-full h-80 object-cover rounded-2xl">
 
                         <!-- Stats Card -->

@@ -7,17 +7,20 @@ use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-cube';
 
     public static function form(Form $form): Form
     {
@@ -30,15 +33,36 @@ class ProductResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label('Nombre')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (Get $get, Set $set, ?string $old, ?string $state) {
+                        if (($get('slug') ?? '') !== Str::slug($old)) {
+                            return;
+                        }
+                        $set('slug', Str::slug($state));
+                    }),
                 Forms\Components\TextInput::make('slug')
                     ->label('Slug')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->helperText('Se genera automáticamente desde el nombre')
+                    ->unique(ignoreRecord: true),
                 Forms\Components\Select::make('category_id')
                     ->label('Categoría')
-                    ->relationship('category', 'name')
-                    ->required(),
+                    ->options(function () {
+                        return \App\Models\Category::query()
+                            ->with('parent')
+                            ->get()
+                            ->mapWithKeys(function ($category) {
+                                $name = $category->parent
+                                    ? $category->parent->name . ' → ' . $category->name
+                                    : $category->name;
+                                return [$category->id => $name];
+                            });
+                    })
+                    ->required()
+                    ->searchable()
+                    ->preload(),
                 Forms\Components\TextInput::make('price')
                     ->label('Precio')
                     ->required()
@@ -60,13 +84,32 @@ class ProductResource extends Resource
                     ->reorderable()
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
-                    ->label('Imagen')
+                    ->label('Imagen del Producto')
                     ->image()
                     ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ])
                     ->directory('products')
                     ->disk('public')
                     ->visibility('public')
-                    ->columnSpanFull(),
+                    ->maxSize(5120) // 5MB máximo
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->imageResizeMode('cover')
+                    ->imageResizeTargetWidth('1200')
+                    ->imageResizeTargetHeight('800')
+                    ->loadingIndicatorPosition('center')
+                    ->panelAspectRatio('16:9')
+                    ->panelLayout('grid')
+                    ->removeUploadedFileButtonPosition('right')
+                    ->uploadButtonPosition('center')
+                    ->deletable(true)
+                    ->downloadable()
+                    ->openable()
+                    ->columnSpanFull()
+                    ->helperText('Formatos permitidos: JPEG, PNG, WebP. Tamaño máximo: 5MB. Recomendado: 1200x800px'),
                 ]),
             Forms\Components\Section::make()
                 ->columns(3)
@@ -80,6 +123,7 @@ class ProductResource extends Resource
                     ->content(fn(?Product $record): string => $record?->updated_at?->format('d/m/Y H:i') ?? '-'),
                 Forms\Components\Toggle::make('is_active')
                     ->label('Activo')
+                    ->default(true)
                     ->required(),
                 Forms\Components\Textarea::make('description')
                     ->label('Descripción')
@@ -99,7 +143,10 @@ class ProductResource extends Resource
                 ->label('Slug')
                 ->searchable(),
             Tables\Columns\ImageColumn::make('image')
-                ->label('Imagen'),
+                ->label('Imagen')
+                ->width(80)
+                ->height(60)
+                ->extraAttributes(['class' => 'object-cover rounded-lg']),
             Tables\Columns\TextColumn::make('price')
                 ->label('Precio')
                 ->money()

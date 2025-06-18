@@ -5,7 +5,7 @@
                 <!-- Left side - Image -->
                 <div class="relative">
                     <div class="rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="/images/service.jpg" alt="Equipo médico en cirugía" class="w-full h-96 object-cover">
+                        <img src="/images/service.webp" alt="Equipo médico en cirugía" class="w-full h-96 object-cover">
                     </div>
 
                     <!-- Testimonial Card Overlay -->

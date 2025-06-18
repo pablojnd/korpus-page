@@ -4,11 +4,16 @@
 
 @section('content')
     <!-- Header Section -->
-    <section class="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+        class="relative text-white py-16 overflow-hidden bg-[url('/images/product-up.webp')] bg-cover bg-center bg-no-repeat">
+        <!-- Dark overlay for better text readability -->
+        <div class="inset-0 bg-black bg-opacity-50"></div>
+
+        <!-- Content -->
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h1 class="text-4xl md:text-5xl font-bold mb-4">Catálogo de Productos</h1>
-                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                <p class="text-xl text-gray-100 max-w-3xl mx-auto">
                     Descubre nuestra amplia gama de equipos médicos de alta calidad para centros de salud
                 </p>
             </div>
@@ -109,13 +114,12 @@
                     @if ($products->count() > 0)
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                             @foreach ($products as $product)
-                                <div
-                                    class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                                <div class="bg-white hover:shadow-xl transition-shadow duration-300">
                                     <!-- Product Image -->
                                     <div class="relative">
                                         <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('images/product-placeholder.jpg') }}"
                                             alt="{{ $product->name }}" class="w-full h-48 object-cover">
-                                        @if ($product->stock == 0)
+                                        {{-- @if ($product->stock == 0)
                                             <div
                                                 class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-medium">
                                                 Sin Stock
@@ -129,7 +133,7 @@
                                         <div
                                             class="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
                                             {{ $product->category->name }}
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                     <!-- Product Info -->
@@ -137,9 +141,9 @@
                                         <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                                             {{ $product->name }}
                                         </h3>
-                                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                                        {{-- <p class="text-gray-600 text-sm mb-4 line-clamp-3">
                                             {{ $product->description }}
-                                        </p>
+                                        </p> --}}
 
                                         {{-- @if ($product->price)
                                             <p class="text-2xl font-bold text-blue-600 mb-4">
@@ -149,14 +153,9 @@
 
                                         <div class="flex justify-between items-center">
                                             <a href="{{ route('catalog.show', $product->slug) }}"
-                                                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
+                                                class="bg-blue-500 text-white px-4 py-2 hover:bg-blue-700 transition-colors text-sm font-medium">
                                                 Ver Detalles
                                             </a>
-
-                                            <button
-                                                class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium">
-                                                Contactar
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
