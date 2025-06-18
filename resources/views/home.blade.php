@@ -14,4 +14,10 @@
 
     <!-- Testimonials Section -->
     @include('components.testimonials-section')
+
+    <!-- Brands Section -->
+    @include('components.brands-section')
+
+    <!-- Contact Section -->
+    @include('components.contact-section')
 @endsection
