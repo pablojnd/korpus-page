@@ -9,7 +9,7 @@
         "libicu-dev",
         "zlib1g-dev",
         "libzip-dev",
-        "bison" <!-- Necesario para evitar errores de compilación -->
+        "bison"
     ],
     "deploy": {
         "aptPackages": [
@@ -29,7 +29,7 @@
     ],
     "commands": {
         "postInput": [
-            "cp .env.example .env || echo 'No .env.example found'",
+            "cp .env.example .env || echo '.env.example not found'",
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ]
     }
