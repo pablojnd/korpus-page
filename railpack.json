@@ -1,19 +1,36 @@
 {
     "$schema": "https://schema.railpack.com",
+    "name": "Laravel App with Filament",
+    "description": "Railpack configuration for Laravel + FilamentPHP apps",
+    "packages": {
+        "php": "8.2"
+    },
     "buildAptPackages": [
         "libicu-dev",
         "zlib1g-dev",
-        "libzip-dev"
+        "libzip-dev",
+        "bison" <!-- Necesario para evitar errores de compilación -->
     ],
-    "packages": {
-        "php": "8.4"
-    },
     "deploy": {
         "aptPackages": [
             "libicu72",
             "zlib1g",
             "libzip4"
         ],
-        "startCommand": "php -S 0.0.0.0:8082 -t public"
+        "startCommand": "php -S 0.0.0.0:8080 -t public"
+    },
+    "inputs": [
+        {
+            "include": [
+                ".env.example"
+            ],
+            "local": true
+        }
+    ],
+    "commands": {
+        "postInput": [
+            "cp .env.example .env || echo 'No .env.example found'",
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
     }
 }
