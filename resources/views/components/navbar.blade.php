@@ -1,4 +1,4 @@
-<nav class="bg-blue-600 shadow-lg">
+<nav class="bg-[#1fa2ff] shadow-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->
@@ -11,19 +11,19 @@
             <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-8">
                     <a href="/"
-                        class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        class="text-white hover:text-blue-100 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                         Inicio
                     </a>
                     <a href="#"
-                        class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        class="text-white hover:text-blue-100 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                         Empresa
                     </a>
                     <a href="{{ route('catalog.index') }}"
-                        class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        class="text-white hover:text-blue-100 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                         Productos
                     </a>
                     <a href="#"
-                        class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        class="text-white hover:text-blue-100 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                         Contacto
                     </a>
                 </div>
@@ -32,14 +32,14 @@
             <!-- Contact Button -->
             <div class="hidden md:block">
                 <button
-                    class="bg-white text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-50 transition-colors">
+                    class="bg-white text-[#1fa2ff] px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-50 transition-colors">
                     Contáctanos
                 </button>
             </div>
 
             <!-- Mobile menu button -->
             <div class="md:hidden">
-                <button type="button" class="text-white hover:text-blue-200 focus:outline-none focus:text-blue-200"
+                <button type="button" class="text-white hover:text-blue-100 focus:outline-none focus:text-blue-100"
                     onclick="toggleMobileMenu()">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -50,21 +50,21 @@
         </div>
     </div> <!-- Mobile menu -->
     <div class="md:hidden hidden" id="mobile-menu">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-blue-700">
-            <a href="/" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3" style="background-color: #1671cc;">
+            <a href="/" class="text-white hover:text-blue-100 block px-3 py-2 rounded-md text-base font-medium">
                 Inicio
             </a>
-            <a href="#" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium">
+            <a href="#" class="text-white hover:text-blue-100 block px-3 py-2 rounded-md text-base font-medium">
                 Empresa
             </a>
             <a href="{{ route('catalog.index') }}"
-                class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium">
+                class="text-white hover:text-blue-100 block px-3 py-2 rounded-md text-base font-medium">
                 Productos
             </a>
-            <a href="#" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium">
+            <a href="#" class="text-white hover:text-blue-100 block px-3 py-2 rounded-md text-base font-medium">
                 Contacto
             </a>
-            <button class="w-full text-left bg-white text-blue-600 px-3 py-2 rounded-md text-base font-medium mt-2">
+            <button class="w-full text-left bg-white text-[#1fa2ff] px-3 py-2 rounded-md text-base font-medium mt-2">
                 Contáctanos
             </button>
         </div>

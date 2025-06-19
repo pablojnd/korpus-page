@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schema.railpack.com",
+    "buildAptPackages": [
+        "libicu-dev",
+        "zlib1g-dev",
+        "libzip-dev"
+    ],
+    "packages": {
+        "php": "8.4"
+    },
+    "deploy": {
+        "aptPackages": [
+            "libicu72",
+            "zlib1g",
+            "libzip4"
+        ],
+        "startCommand": "php -S 0.0.0.0:8082 -t public"
+    }
+}

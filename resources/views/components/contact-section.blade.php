@@ -1,4 +1,4 @@
-<section class="relative bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 overflow-hidden">
+<section class="relative overflow-hidden" style="background: linear-gradient(135deg, #1fa2ff 0%, #12749e 100%);">
     <!-- Elementos decorativos de fondo -->
     <div class="absolute inset-0 bg-gradient-to-br from-transparent to-black/10"></div>
 
@@ -14,8 +14,8 @@
             <div class="relative flex items-center justify-center lg:justify-start order-2 lg:order-1">
                 <!-- Doctora grande apuntando -->
                 <div class="relative z-10">
-                    <img src="{{ asset('images/consultancy-img.png') }}" alt="Consultoría médica"
-                        class="w-full max-w-sm lg:max-w-md h-auto object-contain drop-shadow-2xl">
+                    <img src="{{ asset('images/consultancy-img.png') }}" alt="Insumos médicos de calidad"
+                        class="w-full max-w-md lg:max-w-lg xl:max-w-xl h-auto object-contain drop-shadow-2xl">
                 </div>
 
                 <!-- Elementos decorativos alrededor de la doctora -->
@@ -27,55 +27,42 @@
             <div class="relative z-10 order-1 lg:order-2">
                 <div class="bg-white rounded-3xl shadow-2xl p-8 lg:p-10 max-w-md mx-auto lg:mr-0">
                     <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-3">
-                        ¿Necesitas Consultoría Online?
+                        ¿Necesitas Insumos Médicos?
                     </h2>
                     <p class="text-gray-600 mb-6 text-sm leading-relaxed">
-                        Solo completa el formulario y obtén consulta con los doctores expertos del mundo en pocos
-                        minutos.
+                        Contáctanos para obtener los mejores insumos médicos de calidad. Te responderemos a la brevedad
+                        con la información que necesites.
                     </p>
 
                     <form method="POST" action="#" class="space-y-4">
                         @csrf
                         <div>
-                            <input type="text" id="name" name="name" required placeholder="Nombre"
-                                class="w-full px-5 py-3 bg-gray-50 border-0 rounded-xl text-gray-700 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-blue-400 transition-all duration-200 text-sm" />
+                            <input type="text" id="name" name="name" required placeholder="Nombre completo"
+                                class="w-full px-5 py-3 bg-gray-50 border-0 rounded-xl text-gray-700 placeholder-gray-500 focus:bg-white focus:ring-2 transition-all duration-200 text-sm"
+                                style="--tw-ring-color: #1fa2ff;" />
                         </div>
 
                         <div>
                             <input type="email" id="email" name="email" required
                                 placeholder="Correo electrónico"
-                                class="w-full px-5 py-3 bg-gray-50 border-0 rounded-xl text-gray-700 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-blue-400 transition-all duration-200 text-sm" />
+                                class="w-full px-5 py-3 bg-gray-50 border-0 rounded-xl text-gray-700 placeholder-gray-500 focus:bg-white focus:ring-2 transition-all duration-200 text-sm"
+                                style="--tw-ring-color: #1fa2ff;" />
                         </div>
 
                         <div>
-                            <select id="department" name="department" required
-                                class="w-full px-5 py-3 bg-gray-50 border-0 rounded-xl text-gray-700 focus:bg-white focus:ring-2 focus:ring-blue-400 transition-all duration-200 appearance-none cursor-pointer text-sm">
-                                <option value="">Elegir Departamento</option>
-                                <option value="cardiologia">Cardiología</option>
-                                <option value="neurologia">Neurología</option>
-                                <option value="pediatria">Pediatría</option>
-                                <option value="ginecologia">Ginecología</option>
-                                <option value="traumatologia">Traumatología</option>
-                                <option value="medicina-general">Medicina General</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <select id="doctor" name="doctor" required
-                                class="w-full px-5 py-3 bg-gray-50 border-0 rounded-xl text-gray-700 focus:bg-white focus:ring-2 focus:ring-blue-400 transition-all duration-200 appearance-none cursor-pointer text-sm">
-                                <option value="">Elegir Doctor</option>
-                                <option value="dr-rodriguez">Dr. Rodríguez</option>
-                                <option value="dra-martinez">Dra. Martínez</option>
-                                <option value="dr-gonzalez">Dr. González</option>
-                                <option value="dra-lopez">Dra. López</option>
-                            </select>
+                            <textarea id="message" name="message" rows="4" required
+                                placeholder="Cuéntanos qué insumos médicos necesitas, cantidades, especificaciones, o cualquier consulta..."
+                                class="w-full px-5 py-3 bg-gray-50 border-0 rounded-xl text-gray-700 placeholder-gray-500 focus:bg-white focus:ring-2 transition-all duration-200 text-sm resize-none"
+                                style="--tw-ring-color: #1fa2ff;"></textarea>
                         </div>
 
                         <div class="pt-2">
                             <button type="submit"
-                                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 text-sm">
-                                Obtener Consultoría Online
-                            </button>
+                                class="w-full text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 text-sm"
+                                style="background: linear-gradient(135deg, #1fa2ff 0%, #12749e 100%); transition: all 0.3s ease;"
+                                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04)';"
+                                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05)';">
+                                Enviar Consulta
                             </button>
                         </div>
                     </form>
@@ -85,21 +72,8 @@
     </div>
 </section>
 
-<!-- Estilos personalizados para los selectores -->
+<!-- Estilos personalizados -->
 <style>
-    /* Estilos para los selectores personalizados */
-    select {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-        background-position: right 1rem center;
-        background-repeat: no-repeat;
-        background-size: 1.2em 1.2em;
-        padding-right: 2.5rem;
-    }
-
-    select:focus {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-    }
-
     /* Asegurar que la sección sea completamente responsive */
     @media (max-width: 1023px) {
         .grid.lg\\:grid-cols-2>div:first-child {
@@ -109,5 +83,17 @@
         .grid.lg\\:grid-cols-2>div:last-child {
             order: 1;
         }
+    }
+
+    /* Estilo personalizado para el textarea */
+    textarea {
+        min-height: 100px;
+        font-family: inherit;
+    }
+
+    /* Efecto de enfoque mejorado */
+    input:focus,
+    textarea:focus {
+        box-shadow: 0 0 0 3px rgba(31, 162, 255, 0.1);
     }
 </style>
