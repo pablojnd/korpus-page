@@ -1,0 +1,7 @@
+[build]
+install_cmd = "cp .env.example .env || true && php artisan key:generate && composer install --optimize-autoloader --no-scripts --no-interaction"
+build_cmd = "php artisan build"
+start_cmd = "php -S 0.0.0.0:8082 -t public"
+
+[build.packages]
+apt_packages = ["libicu-dev", "zlib1g-dev", "libzip-dev", "bison"]
