@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -15,6 +16,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Filament\Actions;
+use Filament\Tables\Actions\ImportAction;
+use App\Filament\Imports\ProductImporter;
 
 class ProductResource extends Resource
 {
@@ -174,6 +178,13 @@ class ProductResource extends Resource
             ])
             ->filters([
                 //
+            ])
+            ->headerActions([
+                ImportAction::make()
+                    ->importer(ProductImporter::class)
+                    ->label('Importar Productos')
+                    ->color('success')
+                    ->icon('heroicon-o-arrow-up-tray'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
